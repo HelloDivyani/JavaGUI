@@ -1,0 +1,57 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author Divyani
+ */
+
+import java.awt.Dimension;
+import javax.swing.*;
+
+public class TryClickMe extends JFrame
+{
+    private JButton buttonCounter,buttonReset;
+    private JLabel labelCount;
+    private int clicks = 0;
+    public TryClickMe()
+    {
+        createView();
+        setTitle("Click Me");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        
+    }
+    public void createView()
+    {        
+        JPanel panel = new JPanel();
+        getContentPane().add(panel);
+        labelCount = new JLabel();
+        labelCount.setPreferredSize(new Dimension(200,30));
+        panel.add(labelCount);
+        updateCounter();
+        buttonCounter = new JButton("Click Me");
+        panel.add(buttonCounter);
+        buttonReset = new JButton("Reset");
+        panel.add(buttonReset);
+        
+    }
+    private void updateCounter()
+    {
+        labelCount.setText("Clicked "+clicks+" times");
+    }
+    public static void main (String args[])
+    {
+        // SwingUtilites
+        javax.swing.SwingUtilities.invokeLater(new Runnable(){
+           @Override
+           public void run() {
+              new TryClickMe().setVisible(true);
+           }
+       });
+    } 
+}
