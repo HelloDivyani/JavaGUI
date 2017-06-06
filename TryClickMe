@@ -9,6 +9,8 @@
  */
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class TryClickMe extends JFrame
@@ -35,8 +37,11 @@ public class TryClickMe extends JFrame
         panel.add(labelCount);
         updateCounter();
         buttonCounter = new JButton("Click Me");
+        // Check out two ways of adding event listener
+        buttonCounter.addActionListener(new ButtonCounterActionListener());
         panel.add(buttonCounter);
         buttonReset = new JButton("Reset");
+        buttonReset.addActionListener(new ResetActionListener());
         panel.add(buttonReset);
         
     }
@@ -54,4 +59,32 @@ public class TryClickMe extends JFrame
            }
        });
     } 
+    // Creating the  ButtonCounterActionListener 
+
+    private class ResetActionListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            clicks=0;
+            updateCounter();
+        }
+        
+    }
+private class ButtonCounterActionListener implements ActionListener
+{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            clicks++;
+            updateCounter();
+        }
+    
+}
+
+
+
+
 }
