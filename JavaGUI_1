@@ -1,0 +1,31 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Divyani
+ */
+import java.awt.Dimension;
+import javax.swing.*;
+public class JavaGUI_1 {
+    public static void main(String args[])
+    {
+        JFrame frame = new JFrame();
+        // need to set the size to frame
+        frame.setSize(new Dimension(500,400));
+        //Start position
+        frame.setLocationRelativeTo(null);
+        // Provide various close Options
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // This will simply close on pressing the exit button
+        //set a title
+        frame.setTitle("This is my first simple JFrame  :");
+        frame.setResizable(false);
+                
+        frame.setVisible(true);
+        
+    }
+}
