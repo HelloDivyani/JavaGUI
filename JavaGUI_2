@@ -1,0 +1,58 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Divyani
+ */
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.*;
+public class JavaGUI_1 {
+    public static void main(String args[])
+    {
+        
+        JFrame frame = new JFrame();
+        //JFrame is a container 
+        // For placing component require JPanel
+        JPanel panel = new JPanel();
+        // By Default pael background is same as jframe background
+        panel.setBackground(Color.BLACK);
+        //Now Add this panel to Jframe
+        frame.getContentPane().add(panel);
+        
+        // Default Flow Layout
+        //Add Button
+        JButton button = new JButton ("This is first button ");
+        panel.add(button);
+        
+        //Add Jtext Area in panel
+        JTextField field = new JTextField();
+        // Also set a Preferreded size to TextField
+        field.setPreferredSize(new Dimension(200,25));
+        panel.add(field);
+        
+        //Add Long Button
+        JButton but2 = new JButton("This is very long button need to be added in next line of the panel");
+        panel.add(but2);
+        
+
+
+        // need to set the size to frame
+        frame.setSize(new Dimension(500,400));
+        //Start position
+        frame.setLocationRelativeTo(null);
+        // Provide various close Options
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // This will simply close on pressing the exit button
+        //set a title
+        frame.setTitle("This is my first simple JFrame  :");
+        frame.setResizable(false);
+                
+        frame.setVisible(true);
+        
+    }
+}
