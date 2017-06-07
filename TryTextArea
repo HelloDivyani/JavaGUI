@@ -1,0 +1,98 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Divyani
+ */
+//TextArea With ScrollBar
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+public class TryTextArea extends JFrame
+{
+    private JTextArea textArea;
+    private JLabel label;
+    private JTextField field;
+    
+    public TryTextArea()
+    {
+        createView();
+        setTitle("Demo");
+        setSize(400,200);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setResizable(false);
+    }
+    
+    public void createView()
+    {
+        JPanel panel = new JPanel();
+       //getContentPane.add(panel);
+       //getContentPane is a function so require brackets
+        getContentPane().add(panel);
+        
+        label = new JLabel("Enter Message : ");
+        panel.add(label);
+        
+        field = new JTextField(12);
+        panel.add(field);
+        
+        JButton submit = new JButton("Submit");
+        submit.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                String message = field.getText();
+                textArea.append(message+"\n"); //Append
+                field.setText("");
+                
+            }
+        });
+        panel.add(submit);
+        
+       
+        
+        textArea = new JTextArea();
+        textArea.setEditable(false);
+        //Word Complete
+        textArea.setWrapStyleWord(true);
+        textArea.setLineWrap(true); // Edge touch automatic next Line
+        //Need to add Scroll
+        //Mention ScrollPane for which TextArea
+        JScrollPane scroll = new JScrollPane(textArea);
+        scroll.setPreferredSize(new Dimension(350,90));
+        //scroll.setSize(new Dimension(150,30));
+        panel.add(scroll);
+        
+         JButton clear = new JButton("Clear");
+        clear.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                field.setText("");
+                textArea.setText("");
+            }
+            
+        });
+        panel.add(clear);
+    }
+    public static void main(String args[])
+    {
+        javax.swing.SwingUtilities.invokeLater(new Runnable(){
+            @Override
+            public void run() {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                 new TryTextArea().setVisible(true);
+            }
+        });
+        
+        
+    }
+
+    
+}
