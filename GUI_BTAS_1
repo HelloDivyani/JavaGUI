@@ -1,0 +1,146 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Divyani
+ */
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+public class GUI_BTAS_1 extends JFrame 
+{
+    String PhoneNo,StartTime,EndTime,IpAddr,Location;
+    private JLabel pno,start,end,ip,location,label;
+    private JTextField pnof,startf,endf,ipf,locationf;
+    private JTextArea text;
+    private JButton submit;
+    private JButton clear;
+    public GUI_BTAS_1() 
+    {
+        
+        createView();
+        //setTitle
+        setTitle("BTAS_GUI");
+        // SetSize
+        setSize(600,600);
+        //Default Close
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //not resize
+        setResizable(false);
+        
+    }
+    public static void main(String args[])
+    {
+        javax.swing.SwingUtilities.invokeLater(new Runnable()
+        {
+            @Override
+            public void run() {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                new GUI_BTAS_1().setVisible(true);
+            }
+            
+        });
+        
+    }
+    public void createView()
+    {
+        //create Panel
+        JPanel panel = new JPanel();
+        getContentPane().add(panel);
+        
+        pno = new JLabel("Enter your Phone Number : \n");
+        panel.add(pno);
+        
+        pnof = new JTextField(35);
+        panel.add(pnof);
+        
+        //Format YYYYMMDDHHMMSSMMM
+        start = new JLabel("Enter Start Duration : \n");
+        panel.add(start);
+        
+        startf = new JTextField(35);
+        panel.add(startf);
+        
+        end = new JLabel("Enter End Duration : \n");
+        panel.add(end);
+        
+        endf = new JTextField(35);
+        panel.add(endf);
+        
+        ip = new JLabel("Enter IP Addr of Cluster : \n");
+        panel.add(ip);
+        
+        ipf = new JTextField(35);
+        panel.add(ipf);
+        
+        location = new JLabel("Enter Location of Report : \n");
+        panel.add(location);
+        
+        locationf = new JTextField(35);
+        panel.add(locationf);
+        
+        submit = new JButton("Submit");
+        submit.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            // The entry store Variable
+            PhoneNo = pnof.getText();
+            StartTime = startf.getText();
+            EndTime = endf.getText();
+            Location = locationf.getText();
+            IpAddr = ipf.getText();
+            
+            //On Clicking Submit Data Goes To Main Shell
+            // Also The output from shell scripting goes to textArea
+            // Set it there
+            }
+        
+        
+        });
+        panel.add(submit);
+        
+        clear = new JButton("Reset");
+        clear.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+               //All TextArea Clear
+               text.setText("");
+               ipf.setText("");
+               locationf.setText("");
+               startf.setText("");
+               endf.setText("");
+               pnof.setText("");
+            }
+        
+        });
+        panel.add(clear);
+        
+        label =new JLabel("Final Report Output Goes Here : \n");
+        panel.add(label);
+        
+        text = new JTextArea();
+        text.setEditable(false);
+        text.setWrapStyleWord(true);
+        text.setLineWrap(true);
+        //Add ScrollPane to textArea
+        JScrollPane scroll = new JScrollPane(text);
+        //Add Dimension to scroll and Add it to Panel
+        scroll.setPreferredSize(new Dimension(800,200));
+        panel.add(scroll);
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+}
