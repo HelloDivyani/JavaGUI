@@ -97,7 +97,7 @@ public class GUI_BTAS_1 extends JFrame
             EndTime = endf.getText();
             Location = locationf.getText();
             IpAddr = ipf.getText();
-           // System.out.println(PhoneNo+" "+StartTime+" "+EndTime+" "+IpAddr+" "+Location);
+            //System.out.println(PhoneNo+" "+StartTime+" "+EndTime+" "+IpAddr+" "+Location);
             //On Clicking Submit Data Goes To Main Shell
             // Also The output from shell scripting goes to textArea
             // Set it there
@@ -105,12 +105,40 @@ public class GUI_BTAS_1 extends JFrame
 		//String[] command = {"/bin/bash","~/project_btas/cdr3.sh",}
 		try
 		{
-			Runtime.getRuntime().exec("/bin/bash -c sh cdr4.sh 919872001093 20170101000000000 20171231000000000 127.49.11.150  ~/project_btas/Reports ");
+//PLease provide Location  = /home/divyanimittal/project_btas/Reports
+
+			ProcessBuilder pb = new ProcessBuilder("sh","/home/divyanimittal/project_btas/JavaFiles/cdr4.sh",StartTime,EndTime,PhoneNo,IpAddr,Location);
+              Process p = pb.start();     // Start the process.
+    p.waitFor();                // Wait for the process to finish.
+    System.out.println("Script executed successfully");
+		
+			//Process procBuildScript = new ProcessBuilder("/home/divyanimittal/project_btas/JavaFiles/cdr4.sh", "919872001093 20170101000000000 20171231000000000 127.49.11.150  ~/project_btas/Reports").start();
+				//ProcessBuilder pb = new ProcessBuilder("cdr4.sh", PhoneNo,StartTime,EndTime,IpAddr,Location);
+ 				//Map<String, String> env = pb.environment();
+ 		//	env.put("VAR1", "myValue");
+ 		//	env.remove("OTHERVAR");
+ 		//	env.put("VAR2", env.get("VAR1") + "suffix");
+ 				//pb.directory(new File("~/project_btas/"));
+ 			//Process p = pb.start();
+
+			//Runtime.getRuntime().exec("/bin/bash -c sdr4.sh 919872001093 20170101000000000 20171231000000000 127.49.11.150  ~/project_btas/Reports ");
 			//String target = "sh cdr4.sh 919872001093 20170101000000000 20171231000000000 127.49.11.150  ~/project_btas/Reports";
 
 			//String[] cmd = { "/bin/bash", "-c", "~/project_btas/cdr4.sh "+PhoneNo+"  "+StartTime+"  "+EndTime+"  "+IpAddr+"  "+Location};
 			//Process p = Runtime.getRuntime().exec(target);
-			//System.out.println("Running the Shell SCript");		
+						//System.out.println("Running the Shell SCript");
+			//String homeDir = System.getenv("HOME");
+				//System.out.println("Home : "+homeDir);
+		//			String[] cmd = { homeDir + "/project_btas/cdr3.sh", "foo", "bar" };
+			//String[] cmd = { homeDir + "/project_btas/cdr3.sh", PhoneNo,StartTime,EndTime,IpAddr,Location};
+//System.out.println(cmd);
+			//	Process p = Runtime.getRuntime().exec(cmd);
+			
+				//ProcessBuilder pb = new ProcessBuilder("./cdr4.sh", PhoneNo,StartTime,EndTime,IpAddr,Location);
+// set the working directory here for clarity, as you've used a relative path
+//pb.directory("/home/divyanimittal/project_btas/JavaFiles");
+//Process proc = pb.start();
+		
 
 		}
 		catch(Exception err)
